@@ -1,0 +1,40 @@
+{
+    "timestamp": 1778916794.1649923,
+    "Sx": 3.75,
+    "Sy": 1.75,
+    "receivers": [
+        {
+            "id": 1,
+            "Rx": 4.25,
+            "Ry": 3.75,
+            "STIg": 0.0,
+            "STIf": 0.0,
+            "STIm": 0.0,
+            "rating_g": "-",
+            "rating_f": "-",
+            "rating_m": "-"
+        },
+        {
+            "id": 2,
+            "Rx": 2.75,
+            "Ry": 2.25,
+            "STIg": 0.0,
+            "STIf": 0.0,
+            "STIm": 0.0,
+            "rating_g": "-",
+            "rating_f": "-",
+            "rating_m": "-"
+        },
+        {
+            "id": 3,
+            "Rx": 3.25,
+            "Ry": 1.25,
+            "STIg": 0.0,
+            "STIf": 0.0,
+            "STIm": 0.0,
+            "rating_g": "-",
+            "rating_f": "-",
+            "rating_m": "-"
+        }
+    ]
+}
