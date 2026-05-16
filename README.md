@@ -1,5 +1,7 @@
 # Real-time Speech Intelligibility (STI) Monitoring System
 
+![Python](https://img.shields.io/badge/Python-3.10+-blue) ![Computer Vision](https://img.shields.io/badge/Computer%20Vision-OpenCV-orange) ![Deep Learning](https://img.shields.io/badge/Deep%20Learning-PyTorch-red) ![Machine Learning](https://img.shields.io/badge/Machine%20Learning-XGBoost-green) ![Backend](https://img.shields.io/badge/Backend-FastAPI-009688) ![Frontend](https://img.shields.io/badge/Frontend-Streamlit-FF4B4B)
+
 The system utilizes Computer Vision to detect and track the positions of the sound source and receivers on a physical scale model. It then predicts the Speech Transmission Index (STI) using Deep Learning and visualizes the results in real-time according to the IEC 60268-16 international standard.
 
 ---
