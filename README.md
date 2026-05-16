@@ -1,11 +1,10 @@
-# STI Real-time Monitoring System
-## Hệ thống giám sát chỉ số STI (Speech Transmission Index) thời gian thực
+# Real-time Speech Intelligibility (STI) Monitoring System
 
-Hệ thống sử dụng Computer Vision để nhận diện và theo dõi vị trí nguồn âm (speaker) và các điểm thu (receivers) trên sa bàn, sau đó dự đoán chỉ số STI bằng Deep Learning và trực quan hóa kết quả theo chuẩn IEC 60268-16.
+The system utilizes Computer Vision to detect and track the positions of the sound source and receivers on a physical scale model. It then predicts the Speech Transmission Index (STI) using Deep Learning and visualizes the results in real-time according to the IEC 60268-16 international standard.
 
 ---
 
-## Cấu trúc Project
+## Project Structure
 
 ```
 NCKH_/
@@ -31,52 +30,39 @@ NCKH_/
 │
 ├── data/             # Runtime data (auto-generated)
 │   ├── data.json     # Latest detection data (JSON)
-│   ├── frame.jpg     # Latest camera frame
-│   └── perf_log.csv  # Performance log (FPS, latency)
+│   └── frame.jpg     # Latest camera frame
 │
-├── markers/          # ArUco marker images (ID 0-3)
-│
-├── scripts/          # Utility & visualization scripts
-│   ├── draw_grid_snapping.py      # Grid Snapping diagram
-│   ├── draw_error_correction.py   # Error correction illustration
-│   ├── draw_performance.py        # FPS & Latency charts
-│   └── generate_aruco_board.py    # Generate printable ArUco board
-│
-└── docs/             # Research report & figures
-    ├── Section_3.5_VI.md   # Report (Vietnamese)
-    ├── Section_3.5_EN.md   # Report (English)
-    └── figures/            # All report figures
 ```
 
 ---
 
-## Hướng dẫn chạy
+## How to Run
 
-### 1. Khởi động Backend API
+### 1. Start Backend API
 ```bash
 python -m uvicorn backend.api:app --reload
 ```
 
-### 2. Khởi động Camera Engine
+### 2. Start Camera Engine
 ```bash
 python -m engine.camera_engine
 ```
 
-### 3. Khởi động Streamlit Dashboard
+### 3. Start Streamlit Dashboard
 ```bash
 python -m streamlit run frontend/app_api_camera.py
 ```
 
 ---
 
-## Hiệu năng Mô hình (Model Metrics)
-- **TwoBranchRayNet (STI Prediction):** R² = 0.985 | MAE = 0.0035 | RMSE = 0.0045 (trên tập Test).
-- **Surrogate Model (XGBoost):** Dự đoán 84 biến tia âm phức tạp chỉ từ 5 biến không gian cơ bản với MAE = 0.204.
-- **Hệ thống (End-to-End):** Độ trễ ổn định ở mức ~0.9 FPS trên CPU (không dùng GPU inference), đáp ứng tốt yêu cầu giám sát cận thời gian thực.
+## Model Performance Metrics
+- **TwoBranchRayNet (STI Prediction):** R² = 0.985 | MAE = 0.0035 | RMSE = 0.0045 (on Test set).
+- **Surrogate Model (XGBoost):** Synthesizes 84 complex acoustic ray features from just 5 spatial inputs with MAE = 0.204.
+- **End-to-End System:** Stable latency at ~0.9 FPS on CPU (no GPU inference), fully satisfying the requirements for quasi-real-time monitoring.
 
 ---
 
-## Yêu cầu phần cứng
-- Camera IP (hoặc điện thoại + IP Camera Lite app)
-- Sa bàn với 4 mã ArUco (ID 0-3) ở 4 góc
-- Vật thể đánh dấu: Đỏ (Source), Vàng (Receivers)
+## Hardware Requirements
+- IP Camera (or Smartphone + IP Camera Lite app)
+- Physical scale model with 4 ArUco markers (ID 0-3) placed at the corners
+- Marked objects: Red (Source), Yellow (Receivers)
